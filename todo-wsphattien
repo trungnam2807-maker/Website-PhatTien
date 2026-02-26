@@ -1,0 +1,383 @@
+# TODO triển khai website-phattien (WordPress + cPanel)
+
+> Mục tiêu: theo dõi toàn bộ quá trình triển khai website doanh nghiệp từ khảo sát đến vận hành thật.
+> Cách dùng: đánh dấu `[x]` khi hoàn thành, ghi ngày hoàn thành và ghi chú nếu cần.
+
+---
+
+## 0) Thông tin dự án
+
+- Doanh nghiệp: Head Honda Phát Tiến.
+- Website hiện tại: `https://phattien.com/`.
+- Màu chủ đạo thương hiệu: `#ed1c24`.
+- Logo ngang: `C:\Users\Admin\Downloads\website-phattien\logo-phattien-ngang.png`.
+- Logo tròn: `C:\Users\Admin\Downloads\website-phattien\logo-phattien-tron.jpg`.
+- Sản phẩm chính: các dòng xe máy Honda (xe số, xe tay ga, xe côn tay, xe điện).
+- Dự án mã nguồn: `C:\Users\Admin\Downloads\website-phattien`.
+- Gói WordPress đã chuẩn bị: `wordpress/`.
+- Giao diện: `wordpress/wp-content/themes/company-theme`.
+- Plugin nghiệp vụ: `wordpress/wp-content/plugins/company-core`.
+
+### 0.1 Kết quả nghiên cứu nhanh từ website hiện tại
+- [ ] Cấu trúc nội dung đang mạnh về: danh mục xe, tin khuyến mãi, tin tức, dịch vụ, hệ thống cửa hàng.
+- [ ] Doanh nghiệp có mạng lưới nhiều điểm bán (đặc biệt khu vực TP.HCM và lân cận).
+- [ ] Có CTA gọi tư vấn, đăng ký nhận báo giá, đăng ký nhận khuyến mãi.
+- [ ] Cần nâng trải nghiệm tìm xe, so sánh phiên bản, và thu lead theo khu vực.
+
+### 0.2 Cấu trúc trang ưu tiên cho website mới
+- [ ] Trang chủ.
+- [ ] Danh mục sản phẩm (xe số, xe tay ga, xe côn tay, xe điện).
+- [ ] Trang chi tiết sản phẩm.
+- [ ] Trang khuyến mãi.
+- [ ] Trang tin tức.
+- [ ] Trang hệ thống cửa hàng/HEAD.
+- [ ] Trang dịch vụ.
+- [ ] Trang liên hệ + đặt lịch.
+
+---
+
+## 1) Giai đoạn A - Khảo sát và chốt phạm vi (2-4 ngày)
+
+### 1.1 Việc cần làm (đội nội bộ)
+- [ ] Chốt sơ đồ trang cho giai đoạn 1.
+- [ ] Chốt luồng nghiệp vụ: gửi tư vấn, đặt lịch, nhận voucher.
+- [ ] Chốt chỉ số đo lường: tỷ lệ gửi lead, tỷ lệ đặt lịch, tỷ lệ gửi voucher thành công.
+- [ ] Chốt rõ phạm vi giai đoạn 1 và phần để giai đoạn 2.
+
+### 1.2 Việc BẠN cần tương tác bên ngoài
+- [ ] Làm việc với ban lãnh đạo để chốt ưu tiên nội dung.
+- [ ] Chốt đầu mối nhận lead (email, số điện thoại, thời gian phản hồi).
+- [ ] Chốt chính sách voucher (thời hạn, điều kiện áp dụng, chiến dịch).
+- [ ] Chốt chính sách bán hàng và hậu mãi (thanh toán, vận chuyển, đổi trả nếu có).
+
+### 1.3 Đầu ra cần có
+- [ ] Tài liệu yêu cầu ngắn gọn.
+- [ ] Danh sách phạm vi đã chốt.
+- [ ] Luồng người dùng và luồng nút kêu gọi hành động.
+
+---
+
+## 2) Giai đoạn B - Từ Figma sang đặc tả kỹ thuật (3-5 ngày)
+
+### 2.1 Việc cần làm (đội nội bộ)
+- [ ] Nhận đầy đủ thiết kế Figma bản máy tính và điện thoại.
+- [ ] Bóc tách hệ màu, chữ, khoảng cách, độ bo, đổ bóng.
+- [ ] Ánh xạ từng màn hình Figma sang từng mẫu trang WordPress.
+- [ ] Chốt điểm chuyển bố cục theo kích thước màn hình.
+
+### 2.2 Việc BẠN cần tương tác bên ngoài
+- [ ] Cung cấp liên kết Figma bản cuối (cho phép xem thông số và tải tài nguyên).
+- [ ] Xác nhận giấy phép sử dụng phông chữ.
+- [ ] Cung cấp bộ nhận diện thương hiệu (logo, favicon, ảnh chia sẻ mạng xã hội).
+- [ ] Cung cấp nội dung chính thức cho từng trang.
+
+### 2.3 Đầu ra cần có
+- [ ] Tài liệu đặc tả giao diện.
+- [ ] Danh sách thành phần giao diện và bản đồ ánh xạ mẫu trang.
+
+---
+
+## 3) Giai đoạn C - Thiết lập nền tảng trên cPanel (3-4 ngày)
+
+### 3.1 Việc cần làm (đội nội bộ)
+- [ ] Thiết lập môi trường thử nghiệm WordPress.
+- [ ] Cài giao diện `company-theme` và plugin `company-core`.
+- [ ] Cài bộ plugin nền tảng (SEO, bộ nhớ đệm, bảo mật, sao lưu, SMTP, WooCommerce).
+- [ ] Phân quyền tài khoản cho đội vận hành nội dung.
+
+### 3.2 Việc BẠN cần tương tác bên ngoài (BẮT BUỘC)
+- [ ] Đăng nhập cPanel và tạo tên miền phụ cho môi trường thử nghiệm.
+- [ ] Tạo cơ sở dữ liệu MySQL, tài khoản, và cấp quyền đầy đủ.
+- [ ] Cài WordPress trên tên miền phụ.
+- [ ] Kích hoạt SSL.
+- [ ] Cung cấp thông số SMTP.
+- [ ] Bổ sung các hằng cấu hình vào `wp-config.php`:
+  - [ ] `WP_ENVIRONMENT_TYPE`
+  - [ ] `DISALLOW_FILE_EDIT`
+  - [ ] `COMPANY_ZALO_API_URL`
+  - [ ] `COMPANY_ZALO_ACCESS_TOKEN`
+  - [ ] `COMPANY_VOUCHER_EXPIRY_DAYS`
+
+### 3.3 Đầu ra cần có
+- [ ] Môi trường thử nghiệm truy cập ổn định.
+- [ ] Giao diện và plugin chạy đúng.
+
+---
+
+## 4) Giai đoạn D - Phát triển chức năng lõi (10-15 ngày)
+
+### 4.1 Giao diện và mẫu trang
+- [ ] Hoàn thiện đầu trang/chân trang/khối dùng chung theo Figma.
+- [ ] Hoàn thiện mẫu trang sản phẩm, bài viết, dịch vụ, cửa hàng.
+- [ ] Hoàn thiện trang liên hệ, đặt lịch, nhận voucher.
+- [ ] Tinh chỉnh hiển thị trên máy tính, máy tính bảng, điện thoại.
+
+### 4.2 Thu lead, đặt lịch, voucher
+- [ ] Form tư vấn: kiểm tra dữ liệu + lưu dữ liệu + gửi email.
+- [ ] Form đặt lịch: kiểm tra dữ liệu + lưu dữ liệu + gửi email.
+- [ ] Popup voucher: bấm ảnh/banner để mở và gửi biểu mẫu.
+- [ ] Sinh mã voucher duy nhất và lưu trạng thái.
+- [ ] Gửi voucher qua Zalo OA, lưu nhật ký gửi, và gửi dự phòng qua email khi lỗi.
+
+### 4.3 Bán hàng trực tuyến
+- [ ] Hoàn thiện khu vực cửa hàng, chi tiết sản phẩm, giỏ hàng, thanh toán.
+- [ ] Tinh chỉnh trường thanh toán đúng nghiệp vụ.
+- [ ] Chạy đơn hàng thử nghiệm.
+
+### 4.4 Việc BẠN cần tương tác bên ngoài
+- [ ] Cung cấp khóa truy cập Zalo OA hợp lệ.
+- [ ] Cung cấp thông tin cổng thanh toán.
+- [ ] Cung cấp chính sách giao hàng, hoàn tiền, điều khoản.
+- [ ] Cung cấp dữ liệu sản phẩm ban đầu (tên, giá, thông số, ảnh, tồn kho).
+- [ ] Cung cấp danh sách chi nhánh HEAD chính xác (địa chỉ, giờ mở cửa, số điện thoại, bản đồ).
+
+### 4.5 Đầu ra cần có
+- [ ] Toàn bộ chức năng lõi hoàn thiện trên môi trường thử nghiệm.
+
+---
+
+## 5) Giai đoạn E - Tối ưu SEO, hiệu năng và bảo mật (3-5 ngày)
+
+### 5.1 Việc cần làm (đội nội bộ)
+- [ ] Thiết lập tiêu đề, mô tả, sơ đồ trang, quy tắc robot, dữ liệu có cấu trúc.
+- [ ] Tối ưu ảnh, bộ nhớ đệm, tải chậm, rút gọn tệp.
+- [ ] Thiết lập bảo mật cơ bản: khóa chức năng rủi ro, tiêu đề bảo mật, bảo vệ đăng nhập.
+- [ ] Thiết lập lịch sao lưu và kiểm tra khôi phục.
+
+### 5.2 Việc BẠN cần tương tác bên ngoài
+- [ ] Cấp quyền công cụ quản trị tìm kiếm và công cụ đo lường.
+- [ ] Cấp quyền DNS/CDN nếu cần tối ưu thêm.
+- [ ] Xác nhận chính sách dữ liệu cá nhân.
+
+### 5.3 Đầu ra cần có
+- [ ] Danh sách kiểm tra SEO/hiệu năng/bảo mật đạt yêu cầu.
+
+---
+
+## 6) Giai đoạn F - Kiểm thử, go-live và bàn giao (3-5 ngày)
+
+### 6.1 Kiểm thử chấp nhận
+- [ ] Kiểm thử đa trình duyệt, đa thiết bị.
+- [ ] Kiểm thử toàn luồng tư vấn, đặt lịch, voucher, thanh toán.
+- [ ] Kiểm thử email thông báo và nhật ký lỗi.
+- [ ] Chốt biên bản nghiệm thu.
+
+### 6.2 Lên môi trường thật
+- [ ] Đóng băng thay đổi trước giờ triển khai.
+- [ ] Sao lưu đầy đủ môi trường thật.
+- [ ] Triển khai giao diện và plugin lên môi trường thật.
+- [ ] Làm mới liên kết tĩnh và xóa bộ nhớ đệm.
+- [ ] Kiểm thử nhanh 30 phút đầu.
+
+### 6.3 Theo dõi 72 giờ đầu
+- [ ] Theo dõi thời gian hoạt động và lỗi hệ thống.
+- [ ] Theo dõi tỷ lệ chuyển đổi tư vấn, voucher, thanh toán.
+- [ ] Xử lý sự cố theo mức độ ưu tiên.
+
+### 6.4 Việc BẠN cần tương tác bên ngoài (BẮT BUỘC)
+- [ ] Tạo bản sao lưu thủ công trước khi lên môi trường thật.
+- [ ] Mở quyền truy cập cần thiết cho đội triển khai.
+- [ ] Xác nhận DNS và SSL tên miền chính.
+- [ ] Xác nhận bộ phận vận hành tiếp nhận tài liệu bàn giao.
+
+### 6.5 Đầu ra cần có
+- [ ] Website vận hành thật ổn định.
+- [ ] Biên bản bàn giao và tài liệu vận hành đầy đủ.
+
+---
+
+## 7) Danh sách thông tin BẠN cần chuẩn bị sớm
+
+- [ ] Thông tin đăng nhập cPanel (thử nghiệm + thật).
+- [ ] Thông tin đăng nhập quản trị WordPress.
+- [ ] Thông số SMTP.
+- [ ] Khóa truy cập Zalo OA và mẫu nội dung gửi tin.
+- [ ] Thông tin cổng thanh toán (nếu bán online).
+- [ ] Nội dung website chính thức (văn bản + hình ảnh).
+- [ ] Chính sách pháp lý (bảo mật, điều khoản, thanh toán, hoàn tiền).
+- [ ] Tài khoản công cụ đo lường và công cụ quản trị tìm kiếm.
+- [ ] Danh sách 6 hệ thống HEAD trọng điểm tại TP.HCM kèm thông tin liên hệ.
+
+---
+
+## 8) Bảng theo dõi nhanh
+
+### Trạng thái tổng
+- [ ] Giai đoạn A hoàn thành
+- [ ] Giai đoạn B hoàn thành
+- [ ] Giai đoạn C hoàn thành
+- [ ] Giai đoạn D hoàn thành
+- [ ] Giai đoạn E hoàn thành
+- [ ] Giai đoạn F hoàn thành
+
+### Điểm nghẽn hiện tại
+- [ ] Chưa có điểm nghẽn
+- Ghi chú:
+  - ...
+
+### Mốc duyệt đề xuất
+- [ ] Mốc duyệt 1: kết thúc giai đoạn B
+- [ ] Mốc duyệt 2: kết thúc giai đoạn D
+- [ ] Mốc duyệt 3: trước go-live
+
+---
+
+## 9) Checklist công việc coding từ sơ khai đến hoàn chỉnh
+
+> Mục này dành cho theo dõi kỹ thuật chi tiết: kiến trúc mã, bảo mật, dữ liệu, tích hợp, kiểm thử, vận hành.
+
+### 9.1 Khởi tạo nền tảng mã nguồn
+- [ ] Chuẩn hóa cấu trúc thư mục dự án WordPress:
+  - [ ] `wp-content/themes/company-theme`
+  - [ ] `wp-content/plugins/company-core`
+  - [ ] `wp-content/mu-plugins`
+  - [ ] `docs/`
+- [ ] Thiết lập chuẩn đặt tên file/hàm/class theo tiền tố `company_` hoặc `Company_`.
+- [ ] Thêm file hướng dẫn cài đặt nhanh cho môi trường mới.
+- [ ] Chốt quy tắc không sửa core WordPress trực tiếp.
+
+### 9.2 Thiết kế kiến trúc theme (coding)
+- [ ] Xây dựng giao diện theo hướng module:
+  - [ ] Layout tổng (`header`, `footer`, `main container`)
+  - [ ] Thành phần tái sử dụng (thẻ sản phẩm, thẻ bài viết, CTA, form section)
+  - [ ] Mẫu trang theo nhóm nội dung
+- [ ] Thiết lập hệ biến CSS:
+  - [ ] Màu thương hiệu (`#ed1c24`) và bảng màu phụ
+  - [ ] Khoảng cách, bo góc, bóng đổ, kích thước chữ
+- [ ] Thiết lập nguyên tắc responsive:
+  - [ ] Điểm chuyển bố cục
+  - [ ] Quy tắc hiển thị menu trên di động
+  - [ ] Quy tắc ảnh responsive
+- [ ] Chuẩn hóa khả năng truy cập:
+  - [ ] Nhãn `aria` cho thành phần tương tác
+  - [ ] Điều hướng bằng bàn phím
+  - [ ] Tương phản màu đạt mức chấp nhận
+
+### 9.3 Thiết kế kiến trúc plugin nghiệp vụ (coding)
+- [ ] Tách rõ các lớp chức năng:
+  - [ ] Xử lý lead
+  - [ ] Xử lý đặt lịch
+  - [ ] Xử lý voucher
+  - [ ] Tích hợp Zalo OA
+  - [ ] Tùy biến WooCommerce
+- [ ] Thiết lập bootstrap plugin:
+  - [ ] Nạp class theo thứ tự phụ thuộc
+  - [ ] Đăng ký hook `init`, shortcode, `admin_post`
+  - [ ] Hook kích hoạt/vô hiệu hóa plugin
+- [ ] Ràng buộc nguyên tắc “mỗi class một trách nhiệm chính”.
+
+### 9.4 Thiết kế dữ liệu và cơ sở dữ liệu
+- [ ] Chốt schema bảng dữ liệu custom:
+  - [ ] `company_leads`
+  - [ ] `company_vouchers`
+  - [ ] `company_voucher_logs`
+- [ ] Định nghĩa chỉ mục cần thiết:
+  - [ ] Index theo số điện thoại
+  - [ ] Index theo thời gian tạo
+  - [ ] Unique cho mã voucher
+- [ ] Thiết lập chiến lược lưu trữ:
+  - [ ] Trường bắt buộc/tùy chọn
+  - [ ] Dữ liệu có thể ẩn danh khi cần
+- [ ] Thiết lập chính sách dọn dữ liệu cũ theo chu kỳ.
+
+### 9.5 Coding tính năng biểu mẫu và luồng chuyển đổi
+- [ ] Form tư vấn:
+  - [ ] Validate dữ liệu đầu vào
+  - [ ] Chống gửi rác (honeypot/nonce/rate limit cơ bản)
+  - [ ] Lưu DB và gửi email thông báo
+- [ ] Form đặt lịch:
+  - [ ] Validate ngày giờ và thông tin liên hệ
+  - [ ] Lưu vào CPT `company_booking`
+  - [ ] Gửi email xác nhận nội bộ
+- [ ] Popup voucher:
+  - [ ] Mở/đóng bằng click và bàn phím
+  - [ ] Sinh mã voucher duy nhất
+  - [ ] Lưu trạng thái gửi
+  - [ ] Tự động fallback email khi gửi Zalo lỗi
+
+### 9.6 Coding tích hợp Zalo OA
+- [ ] Tách riêng lớp client gọi API Zalo.
+- [ ] Chuẩn hóa payload gửi tin nhắn voucher.
+- [ ] Bắt lỗi theo nhóm:
+  - [ ] Lỗi kết nối
+  - [ ] Lỗi xác thực token
+  - [ ] Lỗi nghiệp vụ từ API
+- [ ] Ghi log đầy đủ:
+  - [ ] Payload gửi
+  - [ ] Mã trạng thái HTTP
+  - [ ] Nội dung phản hồi
+- [ ] Thiết kế cơ chế retry có giới hạn số lần.
+
+### 9.7 Coding WooCommerce theo nghiệp vụ
+- [ ] Chuẩn hóa trang:
+  - [ ] Danh sách sản phẩm
+  - [ ] Chi tiết sản phẩm
+  - [ ] Giỏ hàng
+  - [ ] Thanh toán
+- [ ] Tùy biến trường thanh toán:
+  - [ ] Bắt buộc số điện thoại
+  - [ ] Placeholder nội dung ghi chú
+- [ ] Gắn tracking nguồn đơn:
+  - [ ] Lưu `utm_source` vào metadata đơn hàng
+- [ ] Xây dựng checklist kiểm thử đơn hàng đầu-cuối.
+
+### 9.8 Bảo mật mức mã nguồn và ứng dụng
+- [ ] Bảo mật đầu vào:
+  - [ ] `sanitize_*` cho mọi trường nhập
+  - [ ] `esc_*` cho mọi dữ liệu xuất ra giao diện
+- [ ] Chống tấn công CSRF:
+  - [ ] Nonce cho toàn bộ form POST
+- [ ] Phân quyền:
+  - [ ] Kiểm tra quyền trước thao tác trong trang quản trị
+- [ ] Cấu hình bảo mật hệ thống:
+  - [ ] Tắt XML-RPC
+  - [ ] Ẩn thông tin phiên bản WordPress
+  - [ ] Thêm security headers cơ bản
+- [ ] Thiết lập rate-limit cơ bản cho endpoint nhạy cảm (nếu cần qua WAF/plugin).
+- [ ] Soát lỗi rò rỉ thông tin nhạy cảm trong thông báo lỗi.
+
+### 9.9 Hiệu năng mức mã nguồn
+- [ ] Tối ưu truy vấn:
+  - [ ] Giảm query không cần thiết trên trang chủ
+  - [ ] Dùng truy vấn giới hạn số bản ghi
+- [ ] Tối ưu giao diện:
+  - [ ] Chia nhỏ tệp JS/CSS khi cần
+  - [ ] Trì hoãn tải script không quan trọng
+- [ ] Tối ưu media:
+  - [ ] Chuẩn kích thước ảnh theo từng vùng hiển thị
+  - [ ] Bật lazy-load ảnh
+- [ ] Kết hợp cache:
+  - [ ] Cache trang
+  - [ ] Cache đối tượng (nếu hạ tầng hỗ trợ)
+
+### 9.10 Kiểm thử kỹ thuật (trước go-live)
+- [ ] Kiểm thử đơn vị cho hàm xử lý dữ liệu quan trọng (nếu có bộ test).
+- [ ] Kiểm thử tích hợp:
+  - [ ] Lead -> DB -> email
+  - [ ] Voucher -> Zalo -> log -> fallback
+  - [ ] Checkout -> đơn hàng -> metadata nguồn
+- [ ] Kiểm thử hồi quy giao diện theo các mẫu trang chính.
+- [ ] Kiểm thử bảo mật cơ bản:
+  - [ ] Thử dữ liệu xấu (XSS giả lập)
+  - [ ] Thử submit thiếu nonce
+  - [ ] Thử spam form liên tục
+
+### 9.11 Nhật ký kỹ thuật và tài liệu hóa
+- [ ] Ghi nhật ký thay đổi theo phiên bản (changelog).
+- [ ] Viết tài liệu mapping:
+  - [ ] Màn hình Figma -> file template
+  - [ ] Chức năng -> class xử lý
+  - [ ] Trường form -> cột dữ liệu
+- [ ] Viết tài liệu xử lý sự cố thường gặp:
+  - [ ] SMTP lỗi
+  - [ ] Zalo token hết hạn
+  - [ ] WooCommerce webhook/payment lỗi
+
+### 9.12 Checklist “xong kỹ thuật” trước bàn giao
+- [ ] Không còn lỗi PHP ở chế độ ghi log.
+- [ ] Không còn chuỗi debug/test hardcode trong mã.
+- [ ] Tất cả form chính đều có nonce, sanitize, validate, escape đầy đủ.
+- [ ] Tính năng voucher chạy ổn trên môi trường thật.
+- [ ] Đơn WooCommerce tạo thành công và có dữ liệu tracking nguồn.
+- [ ] Backup + restore đã chạy thử nghiệm thành công.
+- [ ] Tài liệu vận hành kỹ thuật đã bàn giao đủ cho đội phụ trách.
