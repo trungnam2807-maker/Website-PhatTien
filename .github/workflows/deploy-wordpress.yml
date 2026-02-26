@@ -20,7 +20,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to FTP/FTPS server
+      - name: Deploy plugins to FTP/FTPS server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -28,14 +28,45 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: ${{ secrets.FTP_PORT }}
-          local-dir: ./wordpress/
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          local-dir: ./wordpress/wp-content/plugins/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}/plugins/
           dangerous-clean-slate: false
           exclude: |
             **/.git*
             **/.git*/**
-            **/node_modules/**
-            **/.github/**
-            **/.vscode/**
-            **/docs/**
+            **/.DS_Store
+            **/*.md
+
+      - name: Deploy themes to FTP/FTPS server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: ${{ secrets.FTP_PORT }}
+          local-dir: ./wordpress/wp-content/themes/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}/themes/
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.DS_Store
+            **/*.md
+
+      - name: Deploy mu-plugins to FTP/FTPS server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: ${{ secrets.FTP_PORT }}
+          local-dir: ./wordpress/wp-content/mu-plugins/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}/mu-plugins/
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.DS_Store
             **/*.md
