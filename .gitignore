@@ -1,0 +1,6 @@
+# Ignore heavy WordPress source codes
+data-website-cu/
+wordpress/
+
+# Ignore React node_modules if not already ignored
+phattien-giaoxetannha/node_modules/
